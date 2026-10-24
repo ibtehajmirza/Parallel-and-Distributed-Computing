@@ -11,6 +11,13 @@ public class AsyncWebEngineApp {
         System.out.println("Thread started: " + telemetry.getName() + " | State: " + telemetry.getState());
         System.out.println("Thread started: " + logWorker.getName() + " | State: " + logWorker.getState());
 
-        
+        try {
+            telemetry.join();
+            logWorker.join();
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted Main thread.");
+        }
+
+        System.out.println("All diagnostic tasks cleanly shut down.");
     }
 }
