@@ -24,5 +24,19 @@ public class PacketSymmetryAuditor {
                 stack.push(ch);
             }
         }
+
+        boolean isSymmetric = true;
+        while (!stack.isEmpty() && !queue.isEmpty()) {
+            char fromStack = stack.pop();
+            char fromQueue = queue.dequeue();
+            if (fromStack != fromQueue) {
+                isSymmetric = false;
+                break;
+            }
+        }
+
+        System.out.println("Payload: \"" + packet + "\" -> Bi-Directional Symmetry: " 
+                + (isSymmetric ? "VERIFIED (Palindrome)" : "REJECTED (Asymmetric)"));
+                
     }
 }
