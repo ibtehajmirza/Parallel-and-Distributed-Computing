@@ -12,5 +12,6 @@ public class LogProcessorTask implements Runnable {
                 System.out.println("LogProcessor interrupted");
             }
         }
+        System.out.println("[" + Thread.currentThread().getName() + "] Completed.");
     }
 }
