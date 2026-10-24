@@ -12,4 +12,23 @@ public class RequestQueue {
         rear = 0;
         size = 0;
     }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == capacity;
+    }
+
+    public void enqueue(char c) {
+        if (!isFull()) {
+            data[rear] = c;
+            rear = (rear + 1) % capacity;
+            size++;
+        } else {
+            System.out.println("Queue is full. Cannot enqueue " + c + " into the queue.");
+        }
+    }
+
 }
