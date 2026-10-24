@@ -28,7 +28,7 @@ public class TransactionStack {
             return data[top--];
         } else {
             System.out.println("Stack is empty. Cannot pop from the stack.");
-            return '\0'; // Return null character if stack is empty
+            return '\0';
         }
     }
 

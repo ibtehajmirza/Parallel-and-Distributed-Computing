@@ -31,4 +31,16 @@ public class RequestQueue {
         }
     }
 
+    public char dequeue() {
+        if (!isEmpty()) {
+            char item = data[front];
+            front = (front + 1) % capacity;
+            size--;
+            return item;
+        } else {
+            System.out.println("Queue is empty. Cannot dequeue from the queue.");
+            return '\0'; // Return null character if queue is empty
+        }
+    }
+
 }
