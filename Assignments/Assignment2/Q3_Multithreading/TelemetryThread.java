@@ -14,5 +14,6 @@ public class TelemetryThread extends Thread {
                 System.out.println("TelemetryThread interrupted");
             }
         }
+        System.out.println("[" + getName() + "] Completed.");
     }
 }
