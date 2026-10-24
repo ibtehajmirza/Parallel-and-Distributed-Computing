@@ -1,5 +1,3 @@
-package Assignments.Assignment2.Q3_Multithreading;
-
 public class TelemetryThread extends Thread {
     public TelemetryThread(String name) {
         super(name);
