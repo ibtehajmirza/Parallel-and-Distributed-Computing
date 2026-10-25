@@ -7,7 +7,7 @@ public class ParallelMaxSearch extends SensorSearchEngine {
 
     @Override
     public void processGrid() {
-        for (int i = startIdx; i < endIdx; i++) {
+        for (int i = startInd; i < endInd; i++) {
             if (sensorData[i] > maxVal) {
                 maxVal = sensorData[i];
             }
