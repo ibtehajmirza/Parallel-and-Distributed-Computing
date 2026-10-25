@@ -19,7 +19,7 @@ public class PortfolioThresholdTask extends RecursiveAction {
         if ((end - start) <= THRESHOLD) {
             for (int i = start; i < end; i++) {
                 if (assets[i] > riskCap) {
-                    assets[i] = assets[i] * 1.05; // 5% volatility stress penalty
+                    assets[i] = assets[i] * 1.05;
                 }
             }
         } else {
