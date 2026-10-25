@@ -47,4 +47,28 @@ public class InventoryCatalogManager {
         System.out.println("Total Execution Time: " + totalTime + " ms");
         System.out.printf("Throughput: %.2f ops/sec%n", throughput);
     }
+
+    public static void benchmarkConcurrentMap() throws InterruptedException {
+        Map<String, Integer> concurrentMap = new ConcurrentHashMap<>();
+        // Pre-populate keys
+        for (int i = 0; i < 100; i++) {
+            concurrentMap.put("PROD_" + i, 1000);
+        }
+
+        Thread[] workers = new Thread[NUM_THREADS];
+        long startTime = System.currentTimeMillis();
+
+        for (int t = 0; t < NUM_THREADS; t++) {
+            workers[t] = new Thread(() -> {
+                for (int i = 0; i < OPS_PER_THREAD; i++) {
+                    String key = "PROD_" + (i % 100);
+                    // Segment/bucket-level concurrent access
+                    concurrentMap.compute(key, (k, v) -> (v == null ? 1 : v + 1));
+                }
+            });
+            workers[t].start();
+        }
+
+        
+    }
 }
