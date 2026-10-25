@@ -15,5 +15,16 @@ public class InventoryCatalogManager {
         benchmarkConcurrentMap();
     }
 
-    
+    public static void benchmarkSynchronizedMap() throws InterruptedException {
+        Map<String, Integer> syncMap = Collections.synchronizedMap(new HashMap<>());
+        
+        for (int i = 0; i < 100; i++) {
+            syncMap.put("PROD_" + i, 1000);
+        }
+
+        Thread[] workers = new Thread[NUM_THREADS];
+        long startTime = System.currentTimeMillis();
+
+        
+    }
 }
