@@ -48,4 +48,14 @@ public class CacheLocalityBenchmark {
         }
         return sum;
     }
+
+    public static double traverseColumnMajor() {
+        double sum = 0.0;
+        for (int j = 0; j < N; j++) {
+            for (int i = 0; i < N; i++) {
+                sum += matrix[i][j];
+            }
+        }
+        return sum;
+    }
 }
