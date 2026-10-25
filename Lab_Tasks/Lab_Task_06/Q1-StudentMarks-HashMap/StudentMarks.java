@@ -20,7 +20,7 @@ public class StudentMarks {
         System.out.println("\n--- Updated Marks ---");
         System.out.println("Ali's updated marks: " + studentMarks.get("Ali"));
 
-        String studentName = "Sara";
+        String studentName = "Ibtehaj";
         System.out.println("\n--- Specific Student Search ---");
         System.out.println("Marks of " + studentName + ": " + studentMarks.get(studentName));
 
