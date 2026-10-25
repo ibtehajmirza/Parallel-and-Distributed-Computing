@@ -50,6 +50,14 @@ public class SensorGridMonitorApp {
                 globalMax = maxTasks[i].getMaxVal();
             }
         }
-        
+
+        long endTime = System.nanoTime();
+        double executionTimeMs = (endTime - startTime) / 1e6;
+
+        System.out.println("=== IoT Sensor Grid Parallel Search Summary ===");
+        System.out.printf("Global Min Sensor Value: %.4f%n", globalMin);
+        System.out.printf("Global Max Sensor Value: %.4f%n", globalMax);
+        System.out.printf("Parallel Search Time across 4 Workers: %.3f ms%n", executionTimeMs);
+
     }
 }
