@@ -69,6 +69,15 @@ public class InventoryCatalogManager {
             workers[t].start();
         }
 
-        
+        for (Thread worker : workers) {
+            worker.join();
+        }
+
+        long totalTime = System.currentTimeMillis() - startTime;
+        double throughput = (TOTAL_OPS / (totalTime / 1000.0));
+
+        System.out.println("--- ConcurrentHashMap ---");
+        System.out.println("Total Execution Time: " + totalTime + " ms");
+        System.out.printf("Throughput: %.2f ops/sec%n", throughput);
     }
 }
