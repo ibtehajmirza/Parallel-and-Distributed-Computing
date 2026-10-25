@@ -25,6 +25,26 @@ public class InventoryCatalogManager {
         Thread[] workers = new Thread[NUM_THREADS];
         long startTime = System.currentTimeMillis();
 
-        
+        for (int t = 0; t < NUM_THREADS; t++) {
+            workers[t] = new Thread(() -> {
+                for (int i = 0; i < OPS_PER_THREAD; i++) {
+                    String key = "PROD_" + (i % 100);
+                    // Stock lookup and update
+                    syncMap.put(key, syncMap.get(key) + 1);
+                }
+            });
+            workers[t].start();
+        }
+
+        for (Thread worker : workers) {
+            worker.join();
+        }
+
+        long totalTime = System.currentTimeMillis() - startTime;
+        double throughput = (TOTAL_OPS / (totalTime / 1000.0));
+
+        System.out.println("--- Collections.synchronizedMap() ---");
+        System.out.println("Total Execution Time: " + totalTime + " ms");
+        System.out.printf("Throughput: %.2f ops/sec%n", throughput);
     }
 }
